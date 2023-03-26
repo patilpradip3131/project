@@ -1,46 +1,36 @@
 pipeline {
-agent {
-label {
-		label "built-in"
-		customWorkspace "/data/project-myapp"
-		
-		}
-		}
-		
-	stages {
-		
-		stage ('CLEAN_OLD_M2') {
-			
-			steps {
-				sh "rm -rf /home/saccount/.m2/repository"
-				
-			}
-			
-		}
-	
-		stage ('MAVEN_BUILD') {
-		
-			steps {
-						
-						sh "mvn clean package"
-			
-			}
-			
-		
-		}
-		
-		stage ('COPY_WAR_TO_Server'){
-		
-				steps {
-						
-						sh "scp -r target/LoginWebApp.war saccount@10.0.2.51:/data/project/wars"
 
-						}
-				
-				}
-	
-	
-	
-	}
+     agent {
+	 
+	    label {
 		
+		     label "built-in"
+			 customWorkspace "/mnt"
+		
+		}
+	 
+	 }
+     stages {
+	 
+	    stage ("depoy Loginwebapp") {
+		 
+		   steps {
+		   
+              sh "rm -rf .m2/repository"		   
+		      sh "mvn install"
+			  sh "scp -r /mnt/project/target/LoginWebApp.war /mnt/server/apache-tomcat-9.0.73/webapps
+			  sh "/mnt/server/apache-tomcat-9.0.73/webapps/change.sh"
+			  sh "/mnt/server/apache-tomcat-9.0.73/bin/startup.sh"
+		   }
+		
+		}
+	 
+	 
+	 }
+
+
+
+
+
+
 }
