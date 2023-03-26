@@ -6,5 +6,4 @@
   sh "sed -i 's|password=root|password=admin123456|g' LoginWebApp/login.jsp"
   sh "sed -i 's|username=root|username=admin|g' LoginWebApp/userRegistration.jsp"
   sh "sed -i 's|password=root|password=admin123456|g' LoginWebApp/userRegistration.jsp"
-
- sh "sed -i 's|password=root|password=admin123456|g' LoginWebApp/userRegistration.jsp"
+  sh "sed -i 's|password=root|password=admin123456|g' LoginWebApp/userRegistration.jsp"
