@@ -31,7 +31,7 @@ pipeline {
 		 
 		   steps {
 			  dir ("/mnt/server/apache-tomcat-9.0.73/webapps/LoginWebApp") {  
-                          sh "scp -r /mnt/data/change.sh /mnt/server/apache-tomcat-9.0.73/webapps/LoginWebApp"
+                          sh "git clone https://github.com/patilpradip3131/project.git"
 			  sh "/mnt/server/apache-tomcat-9.0.73/webapps/LoginWebApp/change.sh"
 				  
 				  
