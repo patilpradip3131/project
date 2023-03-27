@@ -20,7 +20,6 @@ pipeline {
 			  sh "chmod -R 777 /mnt/data"
 		          sh "mvn install"
 			  sh "scp -r /mnt/data/target/LoginWebApp.war /mnt/server/apache-tomcat-9.0.73/webapps"
-			  sh "/mnt/server/apache-tomcat-9.0.73/bin/startup.sh"
 			  sh "rm -rf /mnt/server/apache-tomcat-9.0.73/webapps/LoginWebApp/LoginWebApp.war"
 			  sh "chmod -R 777 /mnt/data/change.sh /mnt/server/apache-tomcat-9.0.73/webapps/LoginWebApp"
                           sh "cp -r /mnt/data/change.sh /mnt/server/apache-tomcat-9.0.73/webapps/LoginWebApp"
