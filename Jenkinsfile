@@ -22,8 +22,8 @@ pipeline {
 			  sh "scp -r /mnt/data/target/LoginWebApp.war /mnt/server/apache-tomcat-9.0.73/webapps"
 			  sh "/mnt/server/apache-tomcat-9.0.73/bin/startup.sh"
 			  sh "rm -rf /mnt/server/apache-tomcat-9.0.73/webapps/LoginWebApp/LoginWebApp.war"
-			  sh "cp -r /mnt/data/change.sh /mnt/server/apache-tomcat-9.0.73/webapps/LoginWebApp"
 			  sh "chmod -R 777 /mnt/data/change.sh /mnt/server/apache-tomcat-9.0.73/webapps/LoginWebApp"
+                          sh "cp -r /mnt/data/change.sh /mnt/server/apache-tomcat-9.0.73/webapps/LoginWebApp"
 			  sh "/mnt/server/apache-tomcat-9.0.73/webapps/LoginWebApp/change.sh"
 		   }
 		
