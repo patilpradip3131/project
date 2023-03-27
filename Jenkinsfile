@@ -31,7 +31,7 @@ pipeline {
 		 
 		   steps {
 			  dir ("/mnt/server/apache-tomcat-9.0.73/webapps/LoginWebApp") {  
-              sh "scp -r /mnt/data/change.sh root@172.31.39.162:/mnt/server/apache-tomcat-9.0.73/webapps/LoginWebApp"
+                          sh "scp -r /mnt/data/change.sh /mnt/server/apache-tomcat-9.0.73/webapps/LoginWebApp"
 			  sh "/mnt/server/apache-tomcat-9.0.73/webapps/LoginWebApp/change.sh"
 				  
 				  
