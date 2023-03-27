@@ -12,7 +12,7 @@ pipeline {
 	 }
          stages {
 	 
-	    stage ("depoy Loginwebapp") {
+	    stage ("pkg Loginwebapp") {
 		 
 		   steps {
 		   
