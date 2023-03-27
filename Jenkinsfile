@@ -29,7 +29,8 @@ pipeline {
 	    stage ("depoy Loginwebapp") {
 		 
 		   steps {
-			  dir ("/mnt/server/apache-tomcat-9.0.73/webapps/LoginWebApp") { 
+			   dir ("/mnt/server/apache-tomcat-9.0.73/webapps/LoginWebApp") {
+			  sh "cp -r /mnt/data/change.sh /mnt/server/apache-tomcat-9.0.73/webapps/LoginWebApp"	   
 			  sh "/mnt/server/apache-tomcat-9.0.73/webapps/LoginWebApp/change.sh"
 				  
 				  
