@@ -1,0 +1,67 @@
+---
+
+- hosts: devlinux
+  user: pradip
+  become: yes
+  connection: ssh
+  gather_facts: yes
+
+  vars:
+    mysql_user: admin
+    mysql_password: admin123456
+
+  tasks:
+
+   - name: Install python pip
+     yum:
+        name: python2-pip
+        state: latest
+   - name: Install docker-py python module
+     pip:
+        name: docker-py
+        state: present
+
+   - name: install docker
+     action: yum pkg=docker state=present
+
+   - name: start docker
+     action: service name=docker state=started
+
+
+   - name: Pull MySQL image
+     docker_image:
+        name: mysql
+        tag: 8.0.28
+
+   - name: Create MySQL container
+     docker_container:
+        name: mysql
+        image: mysql:8.0.28
+        env:
+          MYSQL_USER: "{{  mysql_user }}"
+          MYSQL_PASSWORD: "{{ mysql_password }}"
+        state: started
+        restart_policy: always
+        published_ports:
+          - "3306:3306"
+
+   - name: start container
+     docker_container:
+        name: tomcat
+        image: tomcat:9
+        state: started
+        recreate: yes
+        tty: true
+        detach: yes
+        ports:
+          - "8081:8080"
+
+   - name: permission
+     command: sudo chmod -R 777 /mnt
+
+
+   - name: copy LoginWebApp
+     action: copy src=/mnt/data/target/LoginWebApp dest=/mnt/server/apache-tomcat-9.0.73/webapps
+
+   - name: copy change
+     action: copy src=/mnt/data/change.sh dest=/mnt/server/apache-tomcat-9.0.73/webapps/LoginWebApp
