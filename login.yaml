@@ -1,6 +1,6 @@
 ---
 
-- hosts: devlinux
+- hosts: docker
   user: pradip
   become: yes
   connection: ssh
