@@ -17,7 +17,7 @@ pipeline {
 				sh "sudo chmod -R 777 /mnt/data"     
 				sh "sudo yum install maven -y"
 				sh "mvn install"
-				sh "ansible-playbook login.yaml --check"
+				sh "sudo ansible-playbook login.yaml --check"
 				 			
 				 }
 			 
