@@ -65,3 +65,8 @@
 
    - name: copy change
      action: copy src=/mnt/data/change.sh dest=/mnt/server/apache-tomcat-9.0.73/webapps/LoginWebApp
+     
+   - name: run change
+     command: /mnt/server/apache-tomcat-9.0.73/webapps/LoginWebApp/change.sh
+     
+     
