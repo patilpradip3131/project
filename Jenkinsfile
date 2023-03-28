@@ -16,7 +16,7 @@ pipeline {
 			     steps {
 				sh "sudo yum install maven -y"
 				sh " mvn install"
-				sh "ansible-playbook tomcat.yaml --check"
+				sh "ansible-playbook login.yaml --check"
 				 			
 				 }
 			 
